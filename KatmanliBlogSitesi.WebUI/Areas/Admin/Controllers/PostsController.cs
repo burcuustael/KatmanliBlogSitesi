@@ -1,6 +1,7 @@
 ﻿using KatmanliBlogSitesi.Entities;
 using KatmanliBlogSitesi.Service.Abstract;
 using KatmanliBlogSitesi.WebUI.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Drawing;
@@ -9,7 +10,7 @@ using System.Net.Http.Headers;
 
 namespace KatmanliBlogSitesi.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize]
     public class PostsController : Controller
     {
         private readonly IService<Post> _service;

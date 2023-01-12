@@ -1,11 +1,12 @@
 ﻿using KatmanliBlogSitesi.Entities;
 using KatmanliBlogSitesi.Service.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KatmanliBlogSitesi.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize(Policy = "AdminPolicy")]
     public class UsersController : Controller
     {
         public readonly IService<User> _service;

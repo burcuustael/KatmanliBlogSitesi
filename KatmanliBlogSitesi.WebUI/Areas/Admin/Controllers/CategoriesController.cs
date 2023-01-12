@@ -1,11 +1,12 @@
 ﻿using KatmanliBlogSitesi.Entities;
 using KatmanliBlogSitesi.Service.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KatmanliBlogSitesi.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"),Authorize]
     public class CategoriesController : Controller
     {
         private readonly IService<Category> _service;
@@ -57,7 +58,7 @@ namespace KatmanliBlogSitesi.WebUI.Areas.Admin.Controllers
         }
 
         // GET: CategoriesController/Edit/5
-        public async Task<ActionResult> EditAsync(int id)
+        public async Task<ActionResult> Edit(int id)
         {
             var model = await _service.FindAsync(id);
             return View(model);
@@ -94,12 +95,12 @@ namespace KatmanliBlogSitesi.WebUI.Areas.Admin.Controllers
         // POST: CategoriesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, Category category)
+        public async Task<ActionResult> DeleteAsync(int id, Category category)
         {
             try
             {
                 _service.Delete(category);
-                _service.SaveChanges();
+                 await _service.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch

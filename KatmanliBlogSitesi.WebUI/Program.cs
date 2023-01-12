@@ -9,16 +9,26 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<DatabaseContext>(); // veritabaný tablolarýmýzý temsil eden entity framework classý
+builder.Services.AddDbContext<DatabaseContext>(); 
+builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
 {
-    x.LoginPath = "/Admin/Login"; // admin controller da authorize eklediðimizde giriþ yapmayan kullanýcýlarý admin/login sayfasýna yönlendrir.
-    x.Cookie.Name = "AdminLogin";
+    x.LoginPath = "/Admin/Login"; 
+    x.AccessDeniedPath= "/AccessDenied";
+    x.LogoutPath= "/Admin/Login/Logout";
+    x.Cookie.Name = "Administrator";
+    x.Cookie.MaxAge = TimeSpan.FromDays(1);
 });
 
-builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
+builder.Services.AddAuthorization(x =>
+{
+    x.AddPolicy("AdminPolicy", policy => policy.RequireClaim("Role", "Admin"));
+    x.AddPolicy("UserPolicy", policy => policy.RequireClaim("Role", "User"));
+
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
