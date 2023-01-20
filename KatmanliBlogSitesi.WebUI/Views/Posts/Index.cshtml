@@ -13,22 +13,4 @@
     </div>
 </header>
 
-<div class="row">
-
-    @foreach (var item in Model)
-    {
-        <div class="col-lg-4">
-            <div class="card mb-4">
-                <a href="/Posts/Detail/@item.Id"><img class="card-img-top" src="/Img/Posts/@item.Image"></a>
-                <div class="card-body">
-                    <div class="small text-muted">@item.CreateDate</div>
-                    <h2 class="card-title h4">@item.Name</h2>
-                    <p class="card-text"> @item.Description </p>
-                    <a class="btn btn-primary" asp-controller="Posts" asp-action="Detail" asp-route-id="@item.Id">Devamını Oku →</a>
-                </div>
-            </div>
-
-        </div>
-    }
-
-</div>
+<partial name="_Posts" model="Model"/>
