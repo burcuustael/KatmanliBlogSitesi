@@ -1,4 +1,5 @@
-﻿using KatmanliBlogSitesi.Entities;
+﻿using KatmanliBlogSitesi.Data.Abstract;
+using KatmanliBlogSitesi.Entities;
 using KatmanliBlogSitesi.Service.Abstract;
 using KatmanliBlogSitesi.WebUI.Utils;
 using Microsoft.AspNetCore.Authorization;
@@ -15,18 +16,21 @@ namespace KatmanliBlogSitesi.WebUI.Areas.Admin.Controllers
     {
         private readonly IService<Post> _service;
         private readonly IService<Category> _serviceCategory;
+        private readonly IPostService _postService;
 
-        public PostsController(IService<Post> service, IService<Category> serviceCategory)
+
+        public PostsController(IService<Post> service, IService<Category> serviceCategory, IPostService postService)
         {
             _service = service;
             _serviceCategory = serviceCategory;
+            _postService = postService;
         }
 
 
         // GET: PostsController
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            List<Post> posts = _service.GetAll();
+            var posts = await _postService.GetAllPostsByCategoriesAsync();
             return View(posts);
         }
 
