@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatmanliBlogSitesi.WebUI", "KatmanliBlogSitesi.WebUI\KatmanliBlogSitesi.WebUI.csproj", "{CD0A86D2-1509-4A10-AF52-D2C3688A3D66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatmanliBlogSitesi.WebUI", "KatmanliBlogSitesi.WebUI\KatmanliBlogSitesi.WebUI.csproj", "{CD0A86D2-1509-4A10-AF52-D2C3688A3D66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatmanliBlogSitesi.Entities", "KatmanliBlogSitesi.Entities\KatmanliBlogSitesi.Entities.csproj", "{A19CE9F3-A6DA-4E03-B369-9AE056674F3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatmanliBlogSitesi.Entities", "KatmanliBlogSitesi.Entities\KatmanliBlogSitesi.Entities.csproj", "{A19CE9F3-A6DA-4E03-B369-9AE056674F3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatmanliBlogSitesi.Data", "KatmanliBlogSitesi.Data\KatmanliBlogSitesi.Data.csproj", "{70BBCC73-9480-4D62-8D72-FAA9B7829123}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatmanliBlogSitesi.Data", "KatmanliBlogSitesi.Data\KatmanliBlogSitesi.Data.csproj", "{70BBCC73-9480-4D62-8D72-FAA9B7829123}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatmanliBlogSitesi.Service", "KatmanliBlogSitesi.Service\KatmanliBlogSitesi.Service.csproj", "{FBEF10E7-B1A6-4999-97A7-595526149308}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatmanliBlogSitesi.Service", "KatmanliBlogSitesi.Service\KatmanliBlogSitesi.Service.csproj", "{FBEF10E7-B1A6-4999-97A7-595526149308}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatmanliBlogSitesi.WebAPI", "KatmanliBlogSitesi.WebAPI\KatmanliBlogSitesi.WebAPI.csproj", "{4B6F65A4-8EB9-4597-9F45-DDA53A318D53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatmanliBlogSitesi.WebAPIUsing2", "KatmanliBlogSitesi.WebAPIUsing2\KatmanliBlogSitesi.WebAPIUsing2.csproj", "{7E77FFF1-25E6-470B-9E74-9C19681DAEE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{FBEF10E7-B1A6-4999-97A7-595526149308}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBEF10E7-B1A6-4999-97A7-595526149308}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBEF10E7-B1A6-4999-97A7-595526149308}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B6F65A4-8EB9-4597-9F45-DDA53A318D53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B6F65A4-8EB9-4597-9F45-DDA53A318D53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B6F65A4-8EB9-4597-9F45-DDA53A318D53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B6F65A4-8EB9-4597-9F45-DDA53A318D53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E77FFF1-25E6-470B-9E74-9C19681DAEE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E77FFF1-25E6-470B-9E74-9C19681DAEE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E77FFF1-25E6-470B-9E74-9C19681DAEE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E77FFF1-25E6-470B-9E74-9C19681DAEE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

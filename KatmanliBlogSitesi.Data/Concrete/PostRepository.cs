@@ -16,9 +16,9 @@ namespace KatmanliBlogSitesi.Data.Concrete
             return await context.Posts.Include(c=>c.Category).AsNoTracking().ToListAsync();
         }
 
-        public Task<Post> GetPostByCategoriesAsync()
+        public async Task<Post> GetPostByCategoriesAsync(int id)
         {
-            throw new NotImplementedException();
+            return await context.Posts.Include(c => c.Category).AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
         }
     }
 }

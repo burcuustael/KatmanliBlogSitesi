@@ -11,6 +11,6 @@ namespace KatmanliBlogSitesi.Data.Abstract
 
     {
         Task<IEnumerable<Post>> GetAllPostsByCategoriesAsync();
-        Task<Post> GetPostByCategoriesAsync();
+        Task<Post> GetPostByCategoriesAsync(int id);
     }
 }
