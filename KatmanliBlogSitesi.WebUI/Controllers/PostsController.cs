@@ -14,9 +14,8 @@ namespace KatmanliBlogSitesi.WebUI.Controllers
         }
 
         public async Task<IActionResult> Index()
-        {
-            var model = await _postService.GetAllAsync();
-            return View(model);
+        {            
+            return View(await _postService.GetAllAsync());
         }
 
 
@@ -25,6 +24,11 @@ namespace KatmanliBlogSitesi.WebUI.Controllers
             Post post = await _postService.FindAsync(id);
 
             return View(post);
+        }
+
+        public async Task<IActionResult> Search(string ara)
+        {
+            return View(await _postService.GetAllAsync(p=>p.Name.Contains(ara)));
         }
     }
 }
