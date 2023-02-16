@@ -5,18 +5,20 @@ namespace KatmanliBlogSitesi.Data
 {
     public class DatabaseContext: DbContext
     {
-        public DbSet<Category> Categories { get; set; } // Veritabanımızdaki tabloyu simgeler
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // OnConfiguring metodu entity framework core içerisinden gelir ve veritabanı ayarlarını yapabilmemizi sağlar.
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=KatmanliBlogSitesi; integrated security=true"); // Burada uygulamamızda sql server kullanacağımızı entity framework core a  belirttik. UseSqlServer metoduna () içerisinde connection string ile veritabanı bilgilerimizi parametre olarak gönderebiliyoruz.
+           
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=KatmanliBlogSitesi; integrated security=true"); 
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // aşağıdaki metot uygulama ilk defa çalıştığında veritabanı oluştuktan sonra admin paneline giriş yapabilmek için veritabanındaki users tablosuna 1 tane kayıt ekler
+            
             modelBuilder.Entity<User>().HasData(
                 new User
                 {

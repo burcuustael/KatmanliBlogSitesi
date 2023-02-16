@@ -1,0 +1,98 @@
+﻿@model Contact
+
+@{
+    ViewData["Title"] = "İletişim";
+}
+
+<h1>İletişim Sayfası</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <h4>Bana Buradan Mesaj Gönderebilirsin</h4>
+        <hr />
+        <form asp-action="ContactMe" id="iletisim_formu">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="ContactUserName" class="control-label"></label>
+                <input asp-for="ContactUserName" class="form-control" />
+                <span asp-validation-for="ContactUserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactMail" class="control-label"></label>
+                <input asp-for="ContactMail" class="form-control" />
+                <span asp-validation-for="ContactMail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactPhone" class="control-label"></label>
+                <input asp-for="ContactPhone" class="form-control" />
+                <span asp-validation-for="ContactPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactMessage" class="control-label"></label>
+                <textarea asp-for="ContactMessage" class="form-control"> </textarea>   
+                <span asp-validation-for="ContactMessage" class="text-danger"></span>
+            </div>
+            <div class="form-group my-3">
+                <button type="button" class="btn btn-primary" onclick="iletisim_formu()">Gönder</button>
+            </div>
+        </form>
+        @Html.Raw(TempData["Mesaj"])
+    </div>
+    <div class="col-md-6">
+
+        <h4>Bana Aşağıdaki Adreslerden Ulaşabilrisin</h4>
+
+        <p>
+            Email: <a href="mailto:burcustael@gmail.com">burcustael@gmail.com</a>
+        </p>
+        <p>
+
+            LinkedIn Adresim: https://www.linkedin.com/in/burcu-ustael-52a973125/
+        </p>
+
+    </div>
+</div>
+
+
+<div id="sonuc" class="alert alert-info" style="display:none" ></div>
+
+@section Scripts{
+    <script>
+        function iletisim_formu(){
+            var ad = $("ContactUserName").val();
+            var email = $("ContactMail").val();
+            var telefon = $("ContactPhone").val();
+            var mesaj = $("ContactMessage").val();
+
+            var message = {
+                "ContactUserName" : ad,
+                "ContactMail": email,
+                "ContactPhone": telefon,
+                "ContactMessage": mesaj
+            };
+
+            $.ajax({
+
+                method: "POST",
+                url: "/iletisim",
+                type: "json",
+                data: message,
+                success: function(data){
+                    console.log(data)
+                    document.getElementById("iletisim_formu").reset();
+                    $("#sonuc").show().html("Mesajınız Gönderilmiştir.. Teşekkürler..");
+                },
+
+                error : function(err){
+                    $("#sonuc").show().html("Mesajınız Gönderilemedi!");
+                }
+            });
+
+          }
+
+
+    </script>
+}
+

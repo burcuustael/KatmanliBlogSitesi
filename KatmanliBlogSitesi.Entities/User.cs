@@ -17,7 +17,7 @@ namespace KatmanliBlogSitesi.Entities
         [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)]
         public DateTime CreateDate { get; set; } = DateTime.Now;
         [Display(Name = "Durum")]
-        public bool IsActive { get; set; } // kullanıcıyı aktif veya pasif etmek için
+        public bool IsActive { get; set; } 
         [Display(Name = "Admin")]
         public bool IsAdmin { get; set; }
     }

@@ -15,6 +15,6 @@ namespace KatmanliBlogSitesi.Entities
         [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)]
         public DateTime CreateDate { get; set; } = DateTime.Now;
         
-        public virtual List<Post>? Posts { get; set; } // Burada Category sınıfı ile Post sınıfı arasında 1 e çok bir ilişki kurduk
+        public virtual List<Post>? Posts { get; set; } 
     }
 }
